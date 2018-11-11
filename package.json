@@ -1,6 +1,6 @@
 {
   "name": "bst-lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "lib/bst.js",
   "types": "lib/bst.d.ts",
@@ -19,7 +19,13 @@
     "type": "git",
     "url": "git+https://github.com/edwardconnect/binary-search-tree.git"
   },
-  "keywords": ["Binary search tree", "Data structure", "BST", "tree", "Binary"],
+  "keywords": [
+    "Binary search tree",
+    "Data structure",
+    "BST",
+    "tree",
+    "Binary"
+  ],
   "author": "Edward",
   "license": "ISC",
   "bugs": {
