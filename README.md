@@ -31,7 +31,7 @@ var mockE = new Mock(5, 'MockE');
 
 Instantiate a Bst with type 'Mock'
 ```Javscript
-	var bst = new Bst<Mock>()
+var bst = new Bst<Mock>()
 	
 ```
 Insert mock object into bst
@@ -58,7 +58,7 @@ bst.print();
 ##### BstNode
 | Name  | Description  |
 | ------------ | ------------ |
-| `id: string | number`  | The id of bst node. The searching relies on comparing the value of id  |
+| <code>id: string &#124; number</xcode>  | The id of bst node. The searching relies on comparing the value of id  |
 | `data: T`  | Store the data with generic type  |
 | `left: Bst<T>()`  | The left child node of this node  |
 | `right: Bst<T>()` | The right child node of this node   |
@@ -72,13 +72,13 @@ bst.print();
 |  Name |  Description |
 | ------------ | ------------ |
 | `isEmpty(): boolean` | Whether the node is Bst point to null  |
-| `isContains(id: string | number): boolean`  | Whether the bst contain data with target id  |
-| `getMaxId(): number | string | null`   | Find the largest id  |
-| `getMinId(): number | string | null`   | Find the smallest id  |
+| <code>isContains(id: string &#124; number): boolean</code>  | Whether the bst contain data with target id  |
+| <code>getMaxId(): number &#124; string &#124; null</code>   | Find the largest id  |
+| <code>getMinId(): number &#124; string &#124; null</code>   | Find the smallest id  |
 | `getMaxData() :T`  | Find the data with largest id  |
 | `getMinData() :T` |  Find the data with smallest id |
-| `searchDataById(id: number | string): T | null` | Find the data by target id. Return null if not found  |
+| <code>searchDataById(id: number &#124; string): T &#124; null</code> | Find the data by target id. Return null if not found  |
 | `print(depth: number = 0)`  | Print the tree in horizontally. (root on left and leafs on right)  |
-| `insert(id: string | number, data: T)` | Insert data into bst by inputting id of the data and data itself  |
-| `remove(id: string | number)` | Remove the data by id  |
+| <code>insert(id: string &#124; number, data: T)</code> | Insert data into bst by inputting id of the data and data itself  |
+| <code>remove(id: string &#124; number)</code> | Remove the data by id  |
 
