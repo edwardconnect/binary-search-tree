@@ -5,6 +5,8 @@ By https://en.wikipedia.org/wiki/Binary_search_tree
 
 The library was written in Typescript provides a binary tree data structure for storing or searching data. 
 
+NPM: https://www.npmjs.com/package/bst-lib <br />
+GIT: https://github.com/edwardconnect/binary-search-tree
 #### Install
 ```bash
 npm i bst-lib
@@ -12,12 +14,12 @@ npm i bst-lib
 #### Example
 Define and instantiate some mock objects.
 ```javascript
-    class Mock {
-    	constructor(
-    		public id: number,
-    		public value: string
-    	) { }
-    }
+class Mock {
+    constructor(
+    	public id: number,
+    	public value: string
+    ) { }
+}
 	
 var mockA = new Mock(1, 'MockA');
 var mockB = new Mock(2, 'MockB');
@@ -56,7 +58,7 @@ bst.print();
 ##### BstNode
 | Name  | Description  |
 | ------------ | ------------ |
-| `id: string I number`  | The id of bst node. The searching relies on comparing the value of id  |
+| `id: string | number`  | The id of bst node. The searching relies on comparing the value of id  |
 | `data: T`  | Store the data with generic type  |
 | `left: Bst<T>()`  | The left child node of this node  |
 | `right: Bst<T>()` | The right child node of this node   |
@@ -70,13 +72,13 @@ bst.print();
 |  Name |  Description |
 | ------------ | ------------ |
 | `isEmpty(): boolean` | Whether the node is Bst point to null  |
-| `isContains(id: string I number): boolean`  | Whether the bst contain data with target id  |
-| `getMaxId(): number I string I null`   | Find the largest id  |
-| `getMinId(): number I string I null`   | Find the smallest id  |
+| `isContains(id: string | number): boolean`  | Whether the bst contain data with target id  |
+| `getMaxId(): number | string | null`   | Find the largest id  |
+| `getMinId(): number | string | null`   | Find the smallest id  |
 | `getMaxData() :T`  | Find the data with largest id  |
 | `getMinData() :T` |  Find the data with smallest id |
-| `searchDataById(id: number I string): T I null` | Find the data by target id. Return null if not found  |
+| `searchDataById(id: number | string): T | null` | Find the data by target id. Return null if not found  |
 | `print(depth: number = 0)`  | Print the tree in horizontally. (root on left and leafs on right)  |
-| `insert(id: string I number, data: T)` | Insert data into bst by inputting id of the data and data itself  |
-| `remove(id: string I number)` | Remove the data by id  |
+| `insert(id: string | number, data: T)` | Insert data into bst by inputting id of the data and data itself  |
+| `remove(id: string | number)` | Remove the data by id  |
 
