@@ -1,0 +1,38 @@
+{
+  "name": "bst-lib",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/bst.js",
+  "types": "lib/bst.d.ts",
+  "scripts": {
+    "test": "jest --config jestconfig.json",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edwardconnect/binary-search-tree.git"
+  },
+  "keywords": ["Binary search tree", "Data structure", "BST", "tree", "Binary"],
+  "author": "Edward",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edwardconnect/binary-search-tree/issues"
+  },
+  "homepage": "https://github.com/edwardconnect/binary-search-tree#readme",
+  "devDependencies": {
+    "@types/jest": "^23.3.9",
+    "jest": "^23.6.0",
+    "prettier": "^1.15.1",
+    "ts-jest": "^23.10.4",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "typescript": "^3.1.6"
+  }
+}
