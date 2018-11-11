@@ -1,79 +1,70 @@
-export class BstNode<T> {
-    id!: string | number;
-    data!: T;
-    left = new Bst<T>();
-    right = new Bst<T>();
-
-    constructor(id: string | number, data: T) {
-        this.id = id;
-        this.data = data;
-    }
-}
+import { BstNode } from "./bst-node";
 
 export class Bst<T> {
-    private root: BstNode<T> | null = null;
+    private root: BstNode<T> | null;
 
-    constructor() { }
-
-    isEmpty(): boolean {
-        return this.root == null || this.root == undefined;
+    constructor() { 
+        this.root = null;
     }
 
-    isContains(id: string | number): boolean {
-        if (this.isEmpty())
+    public isEmpty(): boolean {
+        return this.root === null || this.root === undefined;
+    }
+
+    public isContains(id: string | number): boolean {
+        if (this.isEmpty()) {
             return false;
+        }
 
-        if (this.root!.id == id)
+        if (this.root!.id === id) {
             return true;
-        else if (id < this.root!.id!)
+        } else if (id < this.root!.id!) {
             return this.root!.left.isContains(id);
-        else
+        } else {
             return this.root!.right.isContains(id);
+        }
     }
 
-    private getMaxBstNode(): BstNode<T> | null {
-        if (this.isEmpty())
-            return null;
-
-        let node = this.root!;
-
-        while (!node!.right.isEmpty())
-            node = node.right.root!;
-
-        return node
-    }
-
-    private getMinBstNode(): BstNode<T> | null {
-        if (this.isEmpty())
-            return null;
-
-        let node = this.root!;
-
-        while (!this.isEmpty() && !node!.left.isEmpty())
-            node = node.left.root!;
-
-        return node
-    }
-
-    getMaxId(): number | string | null {
+    public getMaxId(): number | string | null {
         return this.getMaxBstNode()!.id;
     }
     
-    getMinId(): number | string | null {
+    public getMinId(): number | string | null {
         return this.getMinBstNode()!.id;
     }
 
-    getMinData(): T {
+    public getMinData(): T {
         return this.getMinBstNode()!.data;
     }
 
-    getMaxData(): T {
+    public getMaxData(): T {
         return this.getMaxBstNode()!.data;
     }
 
-    print(depth: number = 0) {
-        if (this.isEmpty())
+    public searchDataById(id: number | string): T | null {
+        if (this.isEmpty()) {
+            return null;
+        }
+
+        let node = this.root!;
+
+        while (id !== node.id) {
+            if (!node!.left.isEmpty() && id < node.id) {
+                node = node.left.root!;
+            } else if (!node!.right.isEmpty() && id > node.id) {
+                node = node.right.root!;
+            } else {
+                return null;
+            }
+        }
+
+        return node.data;
+    }
+
+    public print(depth: number = 0) {
+        if (this.isEmpty()) {
             return;
+        }
 
         this.root!.right.print(depth + 1);
 
@@ -86,32 +77,61 @@ export class Bst<T> {
         this.root!.left.print(depth + 1);
     }
 
-    insert(id: string | number, data: T) {
-        if (this.isEmpty())
+    public insert(id: string | number, data: T) {
+        if (this.isEmpty()) {
             this.root = new BstNode<T>(id, data);
-        else if (id < this.root!.id)
+        } else if (id < this.root!.id) {
             this.root!.left.insert(id, data);
-        else if (id > this.root!.id)
+        } else if (id > this.root!.id) {
             this.root!.right.insert(id, data);
-        else;
+        }
     }
 
-    remove(id: string | number) {
-        if (this.isEmpty())
+    public remove(id: string | number) {
+        if (this.isEmpty()) {
             return;
+        }
 
-        if (id < this.root!.id)
+        if (id < this.root!.id) {
             this.root!.left.remove(id);
-        else if (id > this.root!.id)
+        } else if (id > this.root!.id) {
             this.root!.right.remove(id);
-        else if (this.root!.left.root && this.root!.right.root) {
+        } else if (this.root!.left.root && this.root!.right.root) {
             this.root!.id = this!.root!.right.getMinId()!;
             this.root!.right.remove(this.root!.id);
-        }
-        else {
-            let deletingNode = this.root!;
+        } else {
+            const deletingNode = this.root!;
             this.root = (this.root!.left.isEmpty()) ? this.root!.right.root : this.root!.left.root;
             deletingNode.left.root = deletingNode.right.root = null;
         }
     }
+
+    private getMaxBstNode(): BstNode<T> | null {
+        if (this.isEmpty()) {
+            return null;
+        }
+
+        let node = this.root!;
+
+        while (!node!.right.isEmpty()) {
+            node = node.right.root!;
+        }
+
+        return node;
+    }
+
+    private getMinBstNode(): BstNode<T> | null {
+        if (this.isEmpty()) {
+            return null;
+        }
+
+        let node = this.root!;
+
+        while (!this.isEmpty() && !node!.left.isEmpty()) {
+            node = node.left.root!;
+        }
+
+        return node;
+    }
+
 }
